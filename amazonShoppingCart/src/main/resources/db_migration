@@ -1,0 +1,1 @@
+Create Table user (id bigint(50) AUTO_INCREMENT,name varchar(1024) CHARACTER SET utf8,PRIMARY KEY (id));

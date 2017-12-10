@@ -1,0 +1,134 @@
+1. Register a vehicle with the service. Save the id returned in the response
+
+Method: POST
+Endpoint: /v1/api/vehicle/register
+Request Body: {
+	"type":"truck",
+	"make":"Tata Magic",
+	"registration":"UP16C5443"
+}
+
+Curl call
+
+curl -X POST \
+  http://localhost:8085/v1/api/vehicle/register \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -H 'postman-token: 18b016bf-a66e-1783-0258-5d10b8fa1e79' \
+  -d '{
+	"type":"truck",
+	"make":"Tata Magic",
+	"registration":"UP16C5443"
+}'
+
+2. Register a Tracker with the service. Save the id returned in the response
+
+
+Method: POST
+Endpoint: /v1/api/tracker/register
+Request Body: {
+	"make":"Alcatel"
+}
+
+Curl call
+
+curl -X POST \
+  http://localhost:8085/v1/api/tracker/register \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -H 'postman-token: 629f6ca4-3449-fd07-a1aa-50cdda308994' \
+  -d '{
+	"make":"Alcatel"
+}'
+
+3. Register an agent with the service. Save the id returned in the response
+
+
+Method: POST
+Endpoint: /v1/api/agent/register
+Request Body: {
+	"name":"Srinivas Rao",
+	"emailid":"srini.rao@turvo.com",
+	"mobilenumber":"8182909292"
+}
+Curl call
+
+curl -X POST \
+  http://localhost:8085/v1/api/agent/register \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -H 'postman-token: 5aa134ae-b254-1168-6913-bf884f86804d' \
+  -d '{
+	"name":"Srinivas Rao",
+	"emailid":"srini.rao@turvo.com",
+	"mobilenumber":"8182909292"
+}' 
+
+4. Create a route with the service. Save the id returned in the response.
+Method: POST
+Endpoint: /v1/api/route/register
+Request Body: {
+	"pickupAddress":"Lotus Boulevard, Sector 100, Noida",
+	"deliveryAddress":"Adobe, Block B, Sector 132, Noida"
+}
+
+Curl call
+
+curl -X POST \
+  http://localhost:8085/v1/api/route/register \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -H 'postman-token: c01251ab-cfb6-0c9b-ab63-956b3cee4ad6' \
+  -d '{
+	"pickupAddress":"Lotus Boulevard, Sector 100, Noida",
+	"deliveryAddress":"Adobe, Block B, Sector 132, Noida"
+}'
+
+5. Create a shipment with the service. Save the id returned in the response
+
+Method: POST
+Endpoint: /v1/api/shipment/register
+Request Body: {
+	"vehicleId":<Id returned in step 1>,
+	"trackerId":<Id returned in step 2>,
+	"agentId":<Id returned in step 3>,
+	"routeId": <Id returned in step 4>,
+	"status":"transit"
+}
+Curl call
+
+curl -X POST \
+  http://localhost:8085/v1/api/route/register \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -H 'postman-token: c01251ab-cfb6-0c9b-ab63-956b3cee4ad6' \
+  -d '{
+	"vehicleId":<Id returned in step 1>,
+	"trackerId":<Id returned in step 2>,
+	"agentId":<Id returned in step 3>,
+	"routeId": <Id returned in step 4>,
+	"status":"transit"
+}
+
+6. The tracker attached to the truck can now make POST call to the service to send the coordinates of the current location
+
+Method: POST
+Endpoint: / v1/api/tracker/{trackerid}/location
+Request Body: {
+                  "lat" : 28.53883,
+                  "lng" : 77.36402000000001
+}
+
+Curl call
+
+curl -X POST \
+  http://localhost:8085/v1/api/tracker/{trackerid}/location \
+  -H 'cache-control: no-cache' \
+  -H 'content-type: application/json' \
+  -H 'postman-token: c01251ab-cfb6-0c9b-ab63-956b3cee4ad6' \
+  -d ' {
+                  "lat" : 28.53883,
+                  "lng" : 77.36402000000001
+}
+
+
